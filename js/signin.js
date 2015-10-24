@@ -17,7 +17,8 @@ $('.form-signin').on('submit', function(e) {
     Parse.User.logIn(username, password, {
         // If the username and password matches
         success: function(user) {
-            alert('Welcome!');
+            //alert('Welcome!');
+            location.href = "index.html"
         },
         // If there is an error
         error: function(user, error) {
