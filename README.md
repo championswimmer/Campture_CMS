@@ -4,8 +4,18 @@
 
 ### Pages
 
-Each page is in the root directory for example [countries.html], [signin.html], etc.
-The scripts specific to the page are in /js/{pagename}.js
+Each page is in the root directory for example **countries.html**, **signin.html**, etc.
+The scripts specific to the page are in `/js/{pagename}.js`
+
+## Todo
+
+### States
+- [ ] add image and image_pointer
+
+### Cities
+- [ ] update GeoPoint
+- [ ] get GeoPoint using Google Geocode API
+- [ ] add image and image_pointer
 
 ## Demo
 This is based on the SP Admin Bootstrap theme.
