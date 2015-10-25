@@ -70,10 +70,14 @@ ParseWrapper = {
         });
     },
 
-    fetchStates : function(callback) {
+    fetchStates : function(countryId, callback) {
 
         var query = new Parse.Query(State);
         query.include("country_pointer");
+        if (countryId != null) {
+            var country = new Country(); country.id = countryId;
+            query.equalTo("country_pointer", country);
+        }
         query.find({
             success: function(states) {
                 sessionStorage.states = JSON.stringify(states);
@@ -86,6 +90,7 @@ ParseWrapper = {
             }
         });
     },
+
 
     addState: function(statename, countryId, callback) {
         var state = new State();

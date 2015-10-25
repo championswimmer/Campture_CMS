@@ -4,7 +4,7 @@
 parseInit();
 
 var refreshStates = function() {
-    ParseWrapper.fetchStates({
+    ParseWrapper.fetchStates(null, {
         success: function(states) {
             $("#table-states").empty();
             //var states = JSON.parse(sessionStorage.states);

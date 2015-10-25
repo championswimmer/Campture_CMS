@@ -57,6 +57,54 @@
             </div>
             <!-- /.row -->
 
+            <div class="col-lg-12">
+                <div class="col-lg-4">
+                    <h3 class="table-city-heading">List of Cities</h3>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Country</th>
+                            </tr>
+                            </thead>
+                            <tbody id="table-cities">
+                            <!--<tr>-->
+                            <!--<td>adkfugukq</td>-->
+                            <!--<td>India</td>-->
+                            <!--</tr>-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2">
+                    <form class="form-city after-login" role="form">
+                        <h3 class="form-city-heading">Add state</h3>
+                        <input name="cityname" type="text" class="form-control" placeholder="City Name" required="" autofocus="">
+                        <div class="form-group">
+                            <label>Country</label>
+                            <select class="form-control" id="country-list" onchange="updateStatesInForm(this.value);">
+                                <!--<option value="1">Mr</option>-->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>State</label>
+                            <select class="form-control" id="state-list">
+                                <!--<option value="1">Mr</option>-->
+                            </select>
+                        </div>
+
+                        </select>
+                        <br>
+                        <div class="col-lg-2" style="float:right">
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
         </div>
         <!-- /.container-fluid -->
 
@@ -77,6 +125,7 @@
 
 <!-- This app's js files -->
 <script src="js/app.js"></script>
+<script src="js/cities.js"></script>
 
 </body>
 
