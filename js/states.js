@@ -11,7 +11,11 @@ var refreshStates = function() {
             for (var i = 0; i < states.length; i++) {
                 var object = states[i];
                 //console.log(object.id + ' - ' + object.get('name') + ' - ' + object.get("country_pointer").get("name"));
-                var row = $("<tr><td>" + object.get('name') + "</td><td>" + object.get("country_pointer").get("name") +"</td></tr>");
+                var row = $(
+                    "<tr>" +
+                    "<td>" + object.get('name') + "</td>" +
+                    "<td>" + object.get("country_pointer").get("name") +"</td>" +
+                    "</tr>");
                 $("#table-states").append(row);
             }
 

@@ -29,6 +29,7 @@ $(document).ready(function(){
 
 var Country = Parse.Object.extend("Countries");
 var State = Parse.Object.extend("States");
+var City = Parse.Object.extend("Cities");
 
 ParseWrapper = {
     fetchCountries : function(callback) {
@@ -92,21 +93,63 @@ ParseWrapper = {
     },
 
 
-    addState: function(statename, countryId, callback) {
+    addState: function(stateName, countryId, callback) {
         var state = new State();
 
-        state.set('name', statename);
+        state.set('name', stateName);
         var country = new Country(); country.id = countryId;
         state.set("country_pointer", country);
 
         state.save(null, {
-            success: function(statename) {
+            success: function(stateName) {
                 // Execute any logic that should take place after the object is saved.
                 if (callback) {
-                    callback.success(statename);
+                    callback.success(stateName);
                 }
             },
             error: function(statename, error) {
+                // Execute any logic that should take place if the save fails.
+                // error is a Parse.Error with an error code and message.
+                alert('Failed to create new object, with error code: ' + statename.message);
+            }
+        });
+    },
+
+    fetchCities: function(callback) {
+        var query = new Parse.Query(City);
+        query.include("country_pointer");
+        query.include("state_pointer");
+
+        query.find({
+            success: function(cities) {
+                sessionStorage.cities = JSON.stringify(cities);
+                if (callback) {
+                    callback.success(cities);
+                }
+            },
+            error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+            }
+        });
+    },
+
+    addCity: function(cityName, stateId, countryId, callback) {
+        var city = new City();
+
+        city.set('name', cityName);
+        var country = new Country(); country.id = countryId;
+        var state = new State(); state.id = stateId;
+        city.set("state_pointer", state);
+        city.set("country_pointer", country);
+
+        city.save(null, {
+            success: function(cityName) {
+                // Execute any logic that should take place after the object is saved.
+                if (callback) {
+                    callback.success(cityName);
+                }
+            },
+            error: function(cityName, error) {
                 // Execute any logic that should take place if the save fails.
                 // error is a Parse.Error with an error code and message.
                 alert('Failed to create new object, with error code: ' + statename.message);
