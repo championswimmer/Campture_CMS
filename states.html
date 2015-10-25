@@ -37,20 +37,20 @@
 
     <div id="page-wrapper">
 
-        <div class="container-fluid" style="padding: 1rem">
+        <div class="container-fluid">
 
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Countries
+                        States
                     </h1>
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
                         </li>
                         <li class="active">
-                            <i class="fa fa-globe"></i> Countries
+                            <i class="fa fa-flag-checkered"></i> States
                         </li>
                     </ol>
                 </div>
@@ -58,17 +58,17 @@
             <!-- /.row -->
 
             <div class="col-lg-12">
-                <div class="col-lg-6">
-                    <h3 class="table-country-heading">List of Countries</h3>
+                <div class="col-lg-4">
+                    <h3 class="table-state-heading">List of States</h3>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>objectId</th>
-                                <th>Name</th>
+                                <th>State</th>
+                                <th>Country</th>
                             </tr>
                             </thead>
-                            <tbody id="table-countries">
+                            <tbody id="table-states">
                             <!--<tr>-->
                             <!--<td>adkfugukq</td>-->
                             <!--<td>India</td>-->
@@ -77,10 +77,18 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-lg-6" style="padding: 1rem">
-                    <form class="form-country after-login" role="form">
-                        <h3 class="form-country-heading">Add country</h3>
-                        <input name="countryname" type="text" class="form-control" placeholder="Country Name" required="" autofocus="">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <form class="form-state after-login" role="form">
+                        <h3 class="form-state-heading">Add state</h3>
+                        <input name="statename" type="text" class="form-control" placeholder="State Name" required="" autofocus="">
+                        <div class="form-group">
+                            <label>Country</label>
+                            <select class="form-control" id="country-list">
+                                <!--<option value="1">Mr</option>-->
+                            </select>
+                        </div>
+
+                        </select>
                         <br>
                         <div class="col-lg-2" style="float:right">
                             <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
@@ -99,7 +107,6 @@
 </div>
 <!-- /#wrapper -->
 
-
 <!-- jQuery -->
 <script src="js/libs/jquery.js"></script>
 
@@ -111,7 +118,7 @@
 
 <!-- This app's js files -->
 <script src="js/app.js"></script>
-<script src="js/countries.js"></script>
+<script src="js/states.js"></script>
 
 </body>
 
