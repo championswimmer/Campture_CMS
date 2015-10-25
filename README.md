@@ -1,5 +1,4 @@
 # Campture_CMS
-[TOC]
 
 ## Structure
 
@@ -10,13 +9,8 @@ The scripts specific to the page are in `/js/{pagename}.js`
 
 ## Todo
 
-### States
-- [ ] add image and image_pointer
-
-### Cities
-- [ ] update GeoPoint
-- [ ] get GeoPoint using Google Geocode API
-- [ ] add image and image_pointer
+For all todos, fixmes, pending features please check this issue.
+https://github.com/championswimmer/Campture_CMS/issues/1
 
 ## Demo
 This is based on the SP Admin Bootstrap theme.
