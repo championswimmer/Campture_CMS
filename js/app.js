@@ -32,6 +32,8 @@ var State = Parse.Object.extend("States");
 var City = Parse.Object.extend("Cities");
 var Gear = Parse.Object.extend("Gears");
 var Resource = Parse.Object.extend("Resources");
+var Activity = Parse.Object.extend("Activities");
+
 ParseWrapper = {
     fetchCountries : function(callback) {
         var query = new Parse.Query(Country);
@@ -232,6 +234,45 @@ ParseWrapper = {
                 // Execute any logic that should take place if the save fails.
                 // error is a Parse.Error with an error code and message.
                 alert('Failed to create new object, with error code: ' + resourceName.message);
+            }
+        });
+    },
+
+    fetchActivities : function(callback) {
+        var query = new Parse.Query(Activity);
+
+        query.find({
+            success: function(activities) {
+                console.log("Successfully retrieved " + activities.length + " scores.");
+                // Do something with the returned Parse.Object values
+                sessionStorage.gears = JSON.stringify(activities);
+                if (callback) {
+                    callback.success(activities);
+                }
+            },
+            error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+            }
+        });
+    },
+
+    addActivity: function(activityName, callback) {
+
+        var activity = new Activity();
+
+        activity.set('name', activityName);
+        // Call Parse Login function with those variables
+        activity.save(null, {
+            success: function(activityName) {
+                // Execute any logic that should take place after the object is saved.
+                if (callback) {
+                    callback.success(activityName);
+                }
+            },
+            error: function(activityName, error) {
+                // Execute any logic that should take place if the save fails.
+                // error is a Parse.Error with an error code and message.
+                alert('Failed to create new object, with error code: ' + activityName.message);
             }
         });
     },
