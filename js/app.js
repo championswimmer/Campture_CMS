@@ -30,7 +30,8 @@ $(document).ready(function(){
 var Country = Parse.Object.extend("Countries");
 var State = Parse.Object.extend("States");
 var City = Parse.Object.extend("Cities");
-var Gear = Parse.Object.extend("Gears")
+var Gear = Parse.Object.extend("Gears");
+var Resource = Parse.Object.extend("Resources");
 ParseWrapper = {
     fetchCountries : function(callback) {
         var query = new Parse.Query(Country);
@@ -192,6 +193,45 @@ ParseWrapper = {
                 // Execute any logic that should take place if the save fails.
                 // error is a Parse.Error with an error code and message.
                 alert('Failed to create new object, with error code: ' + gearname.message);
+            }
+        });
+    },
+
+    fetchResources : function(callback) {
+        var query = new Parse.Query(Resource);
+
+        query.find({
+            success: function(resources) {
+                console.log("Successfully retrieved " + resources.length + " scores.");
+                // Do something with the returned Parse.Object values
+                sessionStorage.gears = JSON.stringify(resources);
+                if (callback) {
+                    callback.success(resources);
+                }
+            },
+            error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+            }
+        });
+    },
+
+    addResource: function(resourceName, callback) {
+
+        var resource = new Resource();
+
+        resource.set('name', resourceName);
+        // Call Parse Login function with those variables
+        resource.save(null, {
+            success: function(resourceName) {
+                // Execute any logic that should take place after the object is saved.
+                if (callback) {
+                    callback.success(resourceName);
+                }
+            },
+            error: function(resourceName, error) {
+                // Execute any logic that should take place if the save fails.
+                // error is a Parse.Error with an error code and message.
+                alert('Failed to create new object, with error code: ' + resourceName.message);
             }
         });
     },
