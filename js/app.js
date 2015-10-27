@@ -30,7 +30,7 @@ $(document).ready(function(){
 var Country = Parse.Object.extend("Countries");
 var State = Parse.Object.extend("States");
 var City = Parse.Object.extend("Cities");
-
+var Gear = Parse.Object.extend("Gears")
 ParseWrapper = {
     fetchCountries : function(callback) {
         var query = new Parse.Query(Country);
@@ -155,5 +155,44 @@ ParseWrapper = {
                 alert('Failed to create new object, with error code: ' + statename.message);
             }
         });
-    }
+    },
+
+    fetchGears : function(callback) {
+        var query = new Parse.Query(Gear);
+
+        query.find({
+            success: function(gears) {
+                console.log("Successfully retrieved " + gears.length + " scores.");
+                // Do something with the returned Parse.Object values
+                sessionStorage.gears = JSON.stringify(gears);
+                if (callback) {
+                    callback.success(gears);
+                }
+            },
+            error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+            }
+        });
+    },
+
+    addGear: function(gearname, callback) {
+
+        var gear = new Gear();
+
+        gear.set('name', gearname);
+        // Call Parse Login function with those variables
+        gear.save(null, {
+            success: function(gearname) {
+                // Execute any logic that should take place after the object is saved.
+                if (callback) {
+                    callback.success(gearname);
+                }
+            },
+            error: function(gearname, error) {
+                // Execute any logic that should take place if the save fails.
+                // error is a Parse.Error with an error code and message.
+                alert('Failed to create new object, with error code: ' + gearname.message);
+            }
+        });
+    },
 };

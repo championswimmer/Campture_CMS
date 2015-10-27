@@ -17,7 +17,7 @@ in `app.js`
     - addCountry(countryName, callback: success(message))
 
     - fetchStates(countryId, callback: success(states[]))   
-        ######_Fetches states in a country if countryId is given, else fetches all_
+        _Fetches states in a country if countryId is given, else fetches all_
     - addState(stateName, countryId, callback: success(message))
 
     - fetchCities(callback: success(cities[]))
